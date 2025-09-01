@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0ea5e9" />
+    <title>Your Name — Portfolio</title>
+    <!-- Pico.css for quick, modern styling (no build step) -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css">
+    <style>
+      :root { --brand: #0ea5e9; }
+      header { padding: 1rem 0; border-bottom: 1px solid #eef; }
+      nav a[aria-current="page"] { color: var(--brand); font-weight: 600; }
+      iframe { border: 0; width: 100%; min-height: 640px; border-radius: 12px; }
+      .container { max-width: 980px; margin: 0 auto; padding: 1rem; }
+      footer { border-top: 1px solid #eef; margin-top: 2rem; padding-top: 1rem; color: #666; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
