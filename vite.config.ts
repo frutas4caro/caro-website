@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // - If you deploy to https://<username>.github.io/<REPO_NAME>/, set base to '/<REPO_NAME>/'
 // - If you deploy to https://<username>.github.io (user site), set base to '/'
 export default defineConfig({
-  base: '/',
+  base: '/caro-website/',
   plugins: [
     react(),
     VitePWA({
@@ -15,7 +15,7 @@ export default defineConfig({
       manifest: {
         name: 'Your Name — Portfolio',
         short_name: 'Portfolio',
-        start_url: '.',
+        start_url: './',
         display: 'standalone',
         background_color: '#ffffff',
         theme_color: '#0ea5e9',
