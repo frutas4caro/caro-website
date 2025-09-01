@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 // - If you deploy to https://<username>.github.io/<REPO_NAME>/, set base to '/<REPO_NAME>/'
 // - If you deploy to https://<username>.github.io (user site), set base to '/'
 export default defineConfig({
-  base: '/caro-website/',
+  base: '/',
   plugins: [
     react(),
     VitePWA({
