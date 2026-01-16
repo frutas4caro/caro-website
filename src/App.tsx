@@ -1,15 +1,20 @@
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route, Link } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import GradioEmbed from './components/GradioEmbed'
+import gemeniDoc from './content/google-gemeni-gems.md?raw'
+import terminalDoc from './content/terminal-and-command-line.md?raw'
+import ragDoc from './content/retrieval-augmented-generation-rag.md?raw'
 
 function Home() {
   return (
     <section className="container">
       <h1>Hi! I'm Carolyn Aquino 👋🏽 </h1>
       <p>
-        Software Engineer • Backend • Java • AWS Solutions Architect • Python • AI • Figma • Frontend 
+        Software Engineer • AWS Solutions Architect • Java • Python • AI • Figma 
       </p>
       <p>
-        Get to know me, chat with my AI agent, and let's connect!
+        Get to know me, chat with Pancito, my AI agent, and let's connect!
       </p>
     </section>
   )
@@ -45,6 +50,110 @@ function Chat() {
   )
 }
 
+function Learning() {
+  const learningDocs = [
+    {
+      title: 'Google Gemeni Gems',
+      description: 'Building your own assistants in 5 mins',
+      path: '/learning/google-gemeni-gems'
+    },
+    {
+      title: 'Terminal and Command Line',
+      description: 'Navigate your system like a true engineer',
+      path: '/learning/terminal-and-command-line'
+    },
+    {
+      title: 'Retrieval Augmented Generation (RAG)',
+      description: 'Increase llm response accuracy with a vetted knowledge base!',
+      path: '/learning/retrieval-augmented-generation-rag'
+    }
+  ]
+
+  return (
+    <section className="container">
+      <h2>Learning</h2>
+      <p>Click on one of the one pagers below to get started on your learning journey!</p>
+      <div
+        style={{
+          display: 'grid',
+          gap: '1rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          marginTop: '1rem'
+        }}
+      >
+        {learningDocs.map((doc) => (
+          <Link
+            key={doc.title}
+            to={doc.path}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '1rem',
+              border: '1px solid #e0e0e0',
+              borderRadius: '12px',
+              textDecoration: 'none',
+              color: 'inherit',
+              gap: '0.5rem'
+            }}
+          >
+            <div
+              aria-hidden="true"
+              style={{
+                width: '64px',
+                height: '64px',
+                borderRadius: '12px',
+                background: '#f3f4f6',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '1.75rem',
+                fontWeight: 600
+              }}
+            >
+              📄
+            </div>
+            <strong>{doc.title}</strong>
+            <p style={{ margin: 0 }}>{doc.description}</p>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function GemeniGemsPage() {
+  return (
+    <article className="container">
+      <p><Link to="/learning">← Back to Learning</Link></p>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {gemeniDoc}
+      </ReactMarkdown>
+    </article>
+  )
+}
+
+function TerminalCommandLinePage() {
+  return (
+    <article className="container">
+      <p><Link to="/learning">← Back to Learning</Link></p>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {terminalDoc}
+      </ReactMarkdown>
+    </article>
+  )
+}
+
+function RagPage() {
+  return (
+    <article className="container">
+      <p><Link to="/learning">← Back to Learning</Link></p>
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {ragDoc}
+      </ReactMarkdown>
+    </article>
+  )
+}
+
 export default function App() {
   return (
     <div>
@@ -57,6 +166,7 @@ export default function App() {
             <li><NavLink to="/" end>Home</NavLink></li>
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/chat">Chat</NavLink></li>
+            <li><NavLink to="/learning">Learning</NavLink></li>
           </ul>
         </nav>
       </header>
@@ -66,6 +176,10 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/learning" element={<Learning />} />
+          <Route path="/learning/google-gemeni-gems" element={<GemeniGemsPage />} />
+          <Route path="/learning/terminal-and-command-line" element={<TerminalCommandLinePage />} />
+          <Route path="/learning/retrieval-augmented-generation-rag" element={<RagPage />} />
         </Routes>
       </main>
 
