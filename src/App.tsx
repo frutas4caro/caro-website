@@ -23,9 +23,6 @@ function Home() {
         <p>
           Software Engineer • AWS Solutions Architect • Java • Python • AI • Figma 
         </p>
-        <p>
-          Chat with Pancito, my AI agent, and let's connect!
-        </p>
         <div className="hero-actions">
           <Link to="/chat" role="button">Chat</Link>
           <Link to="/learning" role="button" className="secondary">AI Toolkit</Link>
