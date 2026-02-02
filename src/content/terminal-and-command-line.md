@@ -2,9 +2,6 @@
 
 _Navigate your system like a true engineer._
 
-# Mastering the Command Line
-### Direct System Navigation and Control
-
 ---
 
 ## 1. The Concept: Point-and-Click vs. Text-Command
