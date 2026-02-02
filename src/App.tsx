@@ -1,26 +1,43 @@
-import { NavLink, Routes, Route, Link } from 'react-router-dom'
+import type { CSSProperties } from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import GradioEmbed from './components/GradioEmbed'
+import heroBg from './assets/hero-bg.jpg'
 import gemeniDoc from './content/google-gemeni-gems.md?raw'
 import terminalDoc from './content/terminal-and-command-line.md?raw'
 import ragDoc from './content/retrieval-augmented-generation-rag.md?raw'
 
 function Home() {
+  const heroStyle = {
+    '--hero-image': `url(${heroBg})`
+  } as CSSProperties
+
   return (
-    <section className="container">
-      <h1>Hi! I'm Carolyn Aquino 👋🏽 </h1>
-      <p>
-        Software Engineer • AWS Solutions Architect • Java • Python • AI • Figma 
-      </p>
-      <p>
-        Get to know me, chat with Pancito, my AI agent, and let's connect!
-      </p>
+    <section
+      className="hero"
+      style={heroStyle}
+    >
+      <div className="container">
+        <h1>Hi! I'm Carolyn Aquino 👋🏽 </h1>
+        <p>
+          Software Engineer • AWS Solutions Architect • Java • Python • AI • Figma 
+        </p>
+        <p>
+          Chat with Pancito, my AI agent, and let's connect!
+        </p>
+        <div className="hero-actions">
+          <Link to="/chat" role="button">Chat</Link>
+          <Link to="/learning" role="button" className="secondary">AI Toolkit</Link>
+        </div>
+      </div>
     </section>
   )
 }
 
 function About() {
+  const resumeUrl = `${import.meta.env.BASE_URL}CarolynAquinoResume2025.pdf`
+
   return (
     <section className="container">
       <h2>About</h2>
@@ -33,7 +50,7 @@ function About() {
       </p>
       <ul>
         <li><a href="https://www.linkedin.com/in/carolyn-aquino" target="_blank" rel="noreferrer">LinkedIn</a></li>
-        <li><a href="./public/CarolynAquinoResume2025.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a></li>
+        <li><a href={resumeUrl} target="_blank" rel="noreferrer">Resume (PDF)</a></li>
         <li><a href="mailto:caquino1223@gmail.com">Email</a></li>
       </ul>
     </section>
@@ -43,8 +60,8 @@ function About() {
 function Chat() {
   return (
     <section className="container">
-      <h2>Chat with my AI Agent</h2>
-      <p>Go ahead and chat with my AI agent to get to know me better!</p>
+      <h2>Chat with Pancito, my AI Agent</h2>
+      <p>Ask questions about me, my career and experiencces!!</p>
       <GradioEmbed />
     </section>
   )
@@ -157,20 +174,6 @@ function RagPage() {
 export default function App() {
   return (
     <div>
-      <header>
-        <nav className="container">
-          <ul>
-            <li><strong>Carolyn Aquino</strong></li>
-          </ul>
-          <ul>
-            <li><NavLink to="/" end>Home</NavLink></li>
-            <li><NavLink to="/about">About</NavLink></li>
-            <li><NavLink to="/chat">Chat</NavLink></li>
-            <li><NavLink to="/learning">Learning</NavLink></li>
-          </ul>
-        </nav>
-      </header>
-
       <main>
         <Routes>
           <Route path="/" element={<Home />} />

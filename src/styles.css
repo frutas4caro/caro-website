@@ -1,0 +1,53 @@
+:root { --brand: #0ea5e9; }
+
+header { padding: 1rem 0; border-bottom: 1px solid #eef; }
+
+nav a[aria-current="page"] { color: var(--brand); font-weight: 600; }
+
+iframe { border: 0; width: 100%; min-height: 640px; border-radius: 12px; }
+
+.container { max-width: 980px; margin: 0 auto; padding: 1rem; }
+
+footer { margin-top: 1rem; padding-top: 0.5rem; color: #666; }
+
+/* Keep hero support for the homepage background */
+.hero {
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background-image: var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 6rem 0 5rem;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.35));
+}
+
+.hero > .container {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.25rem, 2vw, 2.5rem);
+  text-align: center;
+}
+
+.hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.75rem; }
+
+.hero p { max-width: 54ch; font-size: 1.05rem; margin-left: auto; margin-right: auto; }
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
